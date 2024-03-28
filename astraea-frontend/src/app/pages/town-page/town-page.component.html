@@ -1,0 +1,13 @@
+<div *ngIf="currentPosition$ | async as currentPosition">
+  {{ currentPosition.id }}
+</div>
+<ul>
+  <li>
+    <a routerLink="travel">{{ "ui.town_page.travel" | translate }}</a>
+  </li>
+  <li>{{ "ui.town_page.shop" | translate }}</li>
+  <li>
+    <a routerLink="guild">{{ "ui.town_page.guild" | translate }}</a>
+  </li>
+  <li>{{ "ui.town_page.tavern" | translate }}</li>
+</ul>

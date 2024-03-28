@@ -1,0 +1,18 @@
+<a routerLink="..">back</a>
+<h1>Quests</h1>
+<h2>available</h2>
+<ul>
+  <li *ngFor="let questId of available$ | async">
+    <ng-container *ngIf="getQuest(questId) | async as quest">
+      <app-quest-line [quest]="quest" [actions]="['accept']"></app-quest-line>
+    </ng-container>
+  </li>
+</ul>
+<h2>Accepted</h2>
+<ul>
+  <li *ngFor="let questId of accepted$ | async">
+    <ng-container *ngIf="getQuest(questId) | async as quest">
+      <app-quest-line [quest]="quest"></app-quest-line>
+    </ng-container>
+  </li>
+</ul>

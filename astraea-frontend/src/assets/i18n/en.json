@@ -1,0 +1,31 @@
+{
+  "ui": {
+    "town_page": {
+      "shop": "Shop",
+      "travel": "Travel",
+      "guild": "Adventure Guild"
+    }
+  },
+  "quests": {
+    "collect": {
+      "1": {
+        "prompt": "Collect {{count}} {{item}}."
+      }
+    },
+    "kill": {
+      "1": {
+        "prompt": "Defeat {{count}} {{enemy}}."
+      }
+    }
+  },
+  "items": {
+    "ironoak_log": "Ironoak Log",
+    "mushroom1": "mushroom1",
+    "boar tusk": "Boar Tusk"
+  },
+  "enemies": {
+    "wolf": "wolf",
+    "snake": "snake",
+    "boar": "boar"
+  }
+}

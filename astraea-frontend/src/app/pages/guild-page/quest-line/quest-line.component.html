@@ -1,0 +1,25 @@
+<ng-container [ngSwitch]="quest.type">
+  <span *ngSwitchCase="'collect'">
+    {{
+      quest.prompt
+        | translate
+          : {
+              item: ("items." + quest.payload["item"] | translate),
+              count: quest.payload["count"]
+            }
+    }}
+  </span>
+  <span *ngSwitchCase="'kill'">
+    {{
+      quest.prompt
+        | translate
+          : {
+              enemy: ("enemies." + quest.payload["enemy"] | translate),
+              count: quest.payload["count"]
+            }
+    }}
+  </span>
+</ng-container>
+<button *ngIf="actions.includes('accept')" (click)="acceptQuest(quest.id)">
+  Accept
+</button>
