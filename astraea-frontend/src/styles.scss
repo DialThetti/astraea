@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./rpg-ui/rpgui.css";
+
+//some overwritings are required
+
+.rpgui-container {
+  position: relative;
+}
