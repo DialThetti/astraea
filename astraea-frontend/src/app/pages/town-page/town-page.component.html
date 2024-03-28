@@ -1,13 +1,21 @@
-<div *ngIf="currentPosition$ | async as currentPosition">
-  {{ currentPosition.id }}
+<div class="rpgui-content">
+  <div class="rpgui-container framed">
+    <h1>Town Page</h1>
+    <hr class="golden" />
+    <div *ngIf="currentPosition$ | async as currentPosition">
+      {{ currentPosition.id }}
+    </div>
+
+    <button class="rpgui-button" routerLink="travel">
+      {{ "ui.town_page.travel" | translate }}
+    </button>
+
+    <button class="rpgui-button">{{ "ui.town_page.shop" | translate }}</button>
+    <button class="rpgui-button" routerLink="guild">
+      {{ "ui.town_page.guild" | translate }}
+    </button>
+    <button class="rpgui-button">
+      {{ "ui.town_page.tavern" | translate }}
+    </button>
+  </div>
 </div>
-<ul>
-  <li>
-    <a routerLink="travel">{{ "ui.town_page.travel" | translate }}</a>
-  </li>
-  <li>{{ "ui.town_page.shop" | translate }}</li>
-  <li>
-    <a routerLink="guild">{{ "ui.town_page.guild" | translate }}</a>
-  </li>
-  <li>{{ "ui.town_page.tavern" | translate }}</li>
-</ul>
