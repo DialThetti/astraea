@@ -1,0 +1,28 @@
+<div class="world-map-wrapper rpgui-container framed" style="overflow: hidden">
+  <div
+    class="world-map"
+    [ngStyle]="{
+      'background-position': -mapOffset.x + 'px ' + -mapOffset.y + 'px'
+    }"
+  ></div>
+  <div
+    class="map-poi"
+    *ngFor="let target of targets"
+    [ngStyle]="{
+      left: target.position.x * (1600 / 30) - 10 - mapOffset.x + 'px',
+      top: (22 - target.position.y) * (1200 / 22) + 10 - mapOffset.y + 'px'
+    }"
+  >
+    <button [disabled]="disabled" (click)="onTravelTo(target)">x</button>
+  </div>
+  <div
+    class="map-poi current-pos"
+    *ngIf="currentWorldPosition$ | async as cp"
+    [ngStyle]="{
+      left: cp.position.x * (1600 / 30) - 10 - mapOffset.x + 'px',
+      top: (22 - cp.position.y) * (1200 / 22) + 10 - mapOffset.y + 'px'
+    }"
+  >
+    x
+  </div>
+</div>

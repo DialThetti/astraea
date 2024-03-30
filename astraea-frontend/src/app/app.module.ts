@@ -19,6 +19,7 @@ import { QuestLineComponent } from './pages/guild-page/quest-line/quest-line.com
 import { TravelPageComponent } from './pages/travel-page/travel-page.component';
 import { worldReducer } from './store/world/world.reducer';
 import { hydrationMetaReducer } from './store/meta/meta.reducer';
+import { MapComponent } from './pages/travel-page/map/map.component';
 
 export function HttpLoaderFactory(_httpBackend: HttpBackend) {
   return new MultiTranslateHttpLoader(_httpBackend, ['/assets/i18n/']);
@@ -31,6 +32,7 @@ export function HttpLoaderFactory(_httpBackend: HttpBackend) {
     GuildPageComponent,
     QuestLineComponent,
     TravelPageComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,

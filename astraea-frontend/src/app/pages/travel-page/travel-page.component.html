@@ -2,14 +2,23 @@
 <div>
   <p>You are at {{ (currentWorldPosition$ | async)?.id }}.</p>
 </div>
-<ul *ngIf="targets$ | async as targets">
-  <li *ngFor="let target of targets">
-    {{ target.id }} Travel Time:
-    {{ target.travelTime | number : "0.1-1" }} foot-hours
-    <button [disabled]="remaining" (click)="travelTo(target)">Travel</button>
-  </li>
-</ul>
-<div *ngIf="traveling$ | async as traveling">
-  Traveling... Arriving in: {{ remaining | date : "mm:ss" }} as
-  {{ traveling.target.id }}
+<div *ngIf="targets$ | async as targets">
+  <ul>
+    <li *ngFor="let target of targets">
+      {{ target.id }} Travel Time:
+      {{ target.travelTime | number : "0.1-1" }} foot-hours
+      <button [disabled]="remaining" (click)="travelTo(target)">Travel</button>
+    </li>
+  </ul>
+  <div *ngIf="traveling$ | async as traveling">
+    Traveling... Arriving in: {{ remaining | date : "mm:ss" }} as
+    {{ traveling.target.id }}
+  </div>
+
+  <app-map
+    [mapOffset]="mapOffset"
+    [targets]="targets"
+    [disabled]="remaining != null"
+    (travelTo)="travelTo($event)"
+  ></app-map>
 </div>

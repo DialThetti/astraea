@@ -1,0 +1,28 @@
+.world-map-wrapper {
+  width: 850px;
+  height: 650px;
+  position: relative;
+}
+.world-map {
+  background-image: url("/assets/img/astraea-worldmap.jpg");
+  background-repeat: space;
+  width: 800px;
+  height: 600px;
+  overflow: hidden;
+}
+.map-poi {
+  color: white;
+  text-transform: capitalize;
+  font-size: large;
+}
+.current-pos {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.map-poi {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
