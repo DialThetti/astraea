@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { worldData } from '../../data/world/world-graph.data';
 import { WorldGraphNode } from '../../models/world/world-graph.model';
-import { Timer } from '../../util/timer';
 import { Store } from '@ngrx/store';
 import {
   selectCurrentPosition,
@@ -11,7 +10,8 @@ import {
   arriveAtDestinationAction,
   travelUpdateAction,
 } from '../../store/world/world.actions';
-import { BehaviorSubject, Observable, filter, map } from 'rxjs';
+import { Observable, filter, map, tap } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-travel-page',
@@ -19,23 +19,32 @@ import { BehaviorSubject, Observable, filter, map } from 'rxjs';
   styleUrls: ['./travel-page.component.scss'],
 })
 export class TravelPageComponent {
+  mapOffset = { x: 400, y: 650 };
   currentWorldPosition$ = this.store.select(selectCurrentPosition);
   traveling$ = this.store.select(selectTraveling);
 
   remaining?: number;
   targets$: Observable<(WorldGraphNode & { travelTime: number })[]>;
-  private worldData = worldData;
 
   constructor(private store: Store) {
     this.targets$ = this.currentWorldPosition$.pipe(
+      tap(
+        (cp) =>
+          (this.mapOffset = {
+            x: cp.position.x * (1600 / 30) - 400,
+            y: (22 - cp.position.y) * (1200 / 22) - 300,
+          })
+      ),
       map((target) => this.getPossibleTargets(target.id))
     );
     this.traveling$.pipe(filter((e) => !!e)).subscribe((e: any) => {
       const dT = Date.now() - (e?.started ?? Date.now());
-      this.remaining = (e.distance ?? 99999999) * 60 * 1000 - dT;
+      this.remaining =
+        (e.distance ?? 99999999) * 60 * 1000 - dT * environment.travelSpeed;
       const i = setInterval(() => {
         const dT = Date.now() - (e?.started ?? Date.now());
-        this.remaining = (e.distance ?? 99999999) * 60 * 1000 - dT;
+        this.remaining =
+          (e.distance ?? 99999999) * 60 * 1000 - dT * environment.travelSpeed;
         if (this.remaining <= 0) {
           this.store.dispatch(arriveAtDestinationAction({ target: e?.target }));
           delete this.remaining;
