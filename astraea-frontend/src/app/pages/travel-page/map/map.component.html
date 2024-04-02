@@ -12,9 +12,8 @@
       left: target.position.x * (1600 / 30) - 10 - mapOffset.x + 'px',
       top: (22 - target.position.y) * (1200 / 22) + 10 - mapOffset.y + 'px'
     }"
-  >
-    <button [disabled]="disabled" (click)="onTravelTo(target)">x</button>
-  </div>
+    (click)="onTravelTo(target)"
+  ></div>
   <div
     class="map-poi current-pos"
     *ngIf="currentWorldPosition$ | async as cp"
@@ -22,7 +21,5 @@
       left: cp.position.x * (1600 / 30) - 10 - mapOffset.x + 'px',
       top: (22 - cp.position.y) * (1200 / 22) + 10 - mapOffset.y + 'px'
     }"
-  >
-    x
-  </div>
+  ></div>
 </div>

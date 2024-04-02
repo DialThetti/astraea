@@ -2,7 +2,7 @@ import { WorldGraph } from '../../models/world/world-graph.model';
 
 export const worldData: WorldGraph = {
   nodes: [
-    { id: 'alethar1', type: 'town', position: { x: 12, y: 2 } },
+    { id: 'alethar1', type: 'town', position: { x: 11.9, y: 2.3 } },
     { id: 'alethar2', type: 'town', position: { x: 17, y: 4 } },
     { id: 'alethar3', type: 'town', position: { x: 12.6, y: 5.8 } },
     { id: 'alethar_gate', type: 'poi', position: { x: 14, y: 9 } },

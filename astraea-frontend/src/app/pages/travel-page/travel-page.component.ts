@@ -1,7 +1,6 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { worldData } from '../../data/world/world-graph.data';
 import { WorldGraphNode } from '../../models/world/world-graph.model';
-import { Timer } from '../../util/timer';
 import { Store } from '@ngrx/store';
 import {
   selectCurrentPosition,
@@ -11,7 +10,8 @@ import {
   arriveAtDestinationAction,
   travelUpdateAction,
 } from '../../store/world/world.actions';
-import { BehaviorSubject, Observable, filter, map, tap } from 'rxjs';
+import { Observable, filter, map, tap } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-travel-page',
@@ -39,10 +39,12 @@ export class TravelPageComponent {
     );
     this.traveling$.pipe(filter((e) => !!e)).subscribe((e: any) => {
       const dT = Date.now() - (e?.started ?? Date.now());
-      this.remaining = (e.distance ?? 99999999) * 60 * 1000 - dT;
+      this.remaining =
+        (e.distance ?? 99999999) * 60 * 1000 - dT * environment.travelSpeed;
       const i = setInterval(() => {
         const dT = Date.now() - (e?.started ?? Date.now());
-        this.remaining = (e.distance ?? 99999999) * 60 * 1000 - dT;
+        this.remaining =
+          (e.distance ?? 99999999) * 60 * 1000 - dT * environment.travelSpeed;
         if (this.remaining <= 0) {
           this.store.dispatch(arriveAtDestinationAction({ target: e?.target }));
           delete this.remaining;
