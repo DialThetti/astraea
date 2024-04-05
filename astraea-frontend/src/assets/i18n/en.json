@@ -1,9 +1,15 @@
 {
   "ui": {
+    "navigation": {
+      "buttons": {
+        "shop": "Shop",
+        "travel": "Travel",
+        "guild": "Adventure Guild",
+        "tavern": "Tavern",
+        "start": "Start-Page"
+      }
+    },
     "town_page": {
-      "shop": "Shop",
-      "travel": "Travel",
-      "guild": "Adventure Guild"
     }
   },
   "quests": {

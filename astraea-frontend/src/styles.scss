@@ -3,6 +3,11 @@
 
 //some overwritings are required
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .rpgui-container {
   position: relative;
 }

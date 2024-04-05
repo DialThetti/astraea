@@ -24,6 +24,7 @@ import { SidebarContainerComponent } from './components/sidebar-container/sideba
 import { ContentContainerComponent } from './components/content-container/content-container.component';
 import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
 import { CharacterComponent } from './components/character/character.component';
+import { StartPageComponent } from './pages/start-page/start-page.component';
 
 export function HttpLoaderFactory(_httpBackend: HttpBackend) {
   return new MultiTranslateHttpLoader(_httpBackend, ['/assets/i18n/']);
@@ -41,6 +42,7 @@ export function HttpLoaderFactory(_httpBackend: HttpBackend) {
     ContentContainerComponent,
     SidemenuComponent,
     CharacterComponent,
+    StartPageComponent,
   ],
   imports: [
     BrowserModule,
