@@ -20,6 +20,10 @@ import { TravelPageComponent } from './pages/travel-page/travel-page.component';
 import { worldReducer } from './store/world/world.reducer';
 import { hydrationMetaReducer } from './store/meta/meta.reducer';
 import { MapComponent } from './pages/travel-page/map/map.component';
+import { SidebarContainerComponent } from './components/sidebar-container/sidebar-container.component';
+import { ContentContainerComponent } from './components/content-container/content-container.component';
+import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
+import { CharacterComponent } from './components/character/character.component';
 
 export function HttpLoaderFactory(_httpBackend: HttpBackend) {
   return new MultiTranslateHttpLoader(_httpBackend, ['/assets/i18n/']);
@@ -33,6 +37,10 @@ export function HttpLoaderFactory(_httpBackend: HttpBackend) {
     QuestLineComponent,
     TravelPageComponent,
     MapComponent,
+    SidebarContainerComponent,
+    ContentContainerComponent,
+    SidemenuComponent,
+    CharacterComponent,
   ],
   imports: [
     BrowserModule,
